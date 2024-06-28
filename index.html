@@ -13,14 +13,27 @@
             cursor: pointer;
             color: blue;
             text-decoration: underline;
+            margin-bottom: 5px;
         }
         .definition {
-            margin-bottom: 10px;
             display: none;
+            margin-bottom: 10px;
         }
         .examples {
             margin-left: 20px;
             list-style-type: square;
+        }
+        .toggle-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-top: 5px;
+            cursor: pointer;
         }
     </style>
     <script>
@@ -40,7 +53,6 @@
                 const wordElement = document.createElement('div');
                 wordElement.classList.add('word');
                 wordElement.textContent = item.word;
-                wordElement.onclick = () => toggleDefinition(wordElement.nextSibling);
 
                 const definitionElement = document.createElement('div');
                 definitionElement.classList.add('definition');
@@ -50,7 +62,13 @@
                 examplesElement.classList.add('examples');
                 examplesElement.innerHTML = item.examples.map(example => `<li>${example}</li>`).join('');
 
+                const toggleButton = document.createElement('button');
+                toggleButton.classList.add('toggle-button');
+                toggleButton.textContent = '詳細を表示';
+                toggleButton.onclick = () => toggleDetails(definitionElement, examplesElement, toggleButton);
+
                 dictionaryContainer.appendChild(wordElement);
+                dictionaryContainer.appendChild(toggleButton);
                 dictionaryContainer.appendChild(definitionElement);
                 dictionaryContainer.appendChild(examplesElement);
 
@@ -59,11 +77,15 @@
             });
         }
 
-        function toggleDefinition(element) {
-            if (element.style.display === 'none') {
-                element.style.display = 'block';
+        function toggleDetails(definitionElement, examplesElement, toggleButton) {
+            if (definitionElement.style.display === 'none') {
+                definitionElement.style.display = 'block';
+                examplesElement.style.display = 'block';
+                toggleButton.textContent = '詳細を非表示';
             } else {
-                element.style.display = 'none';
+                definitionElement.style.display = 'none';
+                examplesElement.style.display = 'none';
+                toggleButton.textContent = '詳細を表示';
             }
         }
 
