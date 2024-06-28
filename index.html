@@ -90,6 +90,18 @@
         }
 
         window.onload = fetchDictionary;
+        async function fetchDictionary() {
+    try {
+        const response = await fetch('dictionary.json');
+        if (!response.ok) {
+            throw new Error('ファイルの読み込みに失敗しました。');
+        }
+        dictionary = await response.json();
+        displayDictionary();
+    } catch (error) {
+        console.error('fetchエラー:', error);
+    }
+}
     </script>
 </head>
 <body>
