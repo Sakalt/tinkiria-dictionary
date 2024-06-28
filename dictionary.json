@@ -1,0 +1,45 @@
+[
+    {"word": "apple", "definition": "A fruit that grows on trees", "examples": ["I like to eat apples.", "She bought a basket of apples."]},
+    {"word": "banana", "definition": "A long curved fruit", "examples": ["She ate a banana for breakfast.", "Bananas are rich in potassium."]},
+    {"word": "cat", "definition": "A small domesticated carnivorous mammal", "examples": ["The cat is sleeping on the couch.", "I have a black cat named Luna."]},
+    {"word": "dog", "definition": "A domesticated carnivorous mammal", "examples": ["My dog loves to play fetch.", "She adopted a rescue dog."]},
+    {"word": "elephant", "definition": "A large herbivorous mammal", "examples": ["The elephant sprayed itself with water.", "Elephants have a good memory."]},
+    {"word": "fish", "definition": "A limbless cold-blooded vertebrate animal", "examples": ["He caught a big fish in the lake.", "She likes to eat grilled fish."]},
+    {"word": "grape", "definition": "A small round fruit", "examples": ["She ate a bunch of grapes.", "Grapes are used to make wine."]},
+    {"word": "hat", "definition": "A shaped covering for the head", "examples": ["He wears a hat to protect himself from the sun.", "She bought a new winter hat."]},
+    {"word": "ice", "definition": "Frozen water", "examples": ["He put ice in his drink.", "She slipped on the ice."]},
+    {"word": "jacket", "definition": "An outer garment extending either to the waist or the hips", "examples": ["She wore a warm jacket in winter.", "He hung his jacket on the coat rack."]},
+    {"word": "kite", "definition": "An object flown in the air at the end of a string", "examples": ["They flew a kite in the park.", "She made a colorful kite."]},
+    {"word": "lion", "definition": "A large wild cat", "examples": ["The lion roared loudly.", "Lions live in prides."]},
+    {"word": "monkey", "definition": "A small to medium-sized primate", "examples": ["The monkey swung from branch to branch.", "Monkeys are playful animals."]},
+    {"word": "nest", "definition": "A structure in which birds lay eggs and raise their young", "examples": ["The birds built a nest in the tree.", "She found a nest full of eggs."]},
+    {"word": "orange", "definition": "A round juicy citrus fruit with a tough bright reddish-yellow rind", "examples": ["She peeled an orange for a snack.", "Oranges are rich in vitamin C."]},
+    {"word": "pear", "definition": "A sweet yellowish- or brownish-green edible fruit that is typically narrow at the stalk and wider toward the base", "examples": ["He took a bite of the juicy pear.", "She sliced pears for a fruit salad."]},
+    {"word": "queen", "definition": "The female ruler of an independent state, especially one who inherits the position by right of birth", "examples": ["The queen waved to the crowd.", "She became queen after her father passed away."]},
+    {"word": "rabbit", "definition": "A burrowing, gregarious, plant-eating mammal with long ears, long hind legs, and a short tail", "examples": ["The rabbit hopped across the field.", "They kept rabbits as pets."]},
+    {"word": "snake", "definition": "A long limbless reptile that has no eyelids, a short tail, and jaws that are capable of considerable extension", "examples": ["He saw a snake slithering through the grass.", "She studied snakes in biology class."]},
+    {"word": "tiger", "definition": "A very large solitary cat with a yellow-brown coat striped with black, native to the forests of Asia but becoming increasingly rare", "examples": ["The tiger prowled through the jungle.", "Tigers are endangered animals."]},
+    {"word": "umbrella", "definition": "A device consisting of a circular canopy of cloth on a folding metal frame supported by a central rod, used as protection against rain or sometimes sun", "examples": ["She opened her umbrella as it started to rain.", "He forgot his umbrella at home."]},
+    {"word": "vase", "definition": "A decorative container, typically made of glass or china and used as an ornament or for displaying cut flowers", "examples": ["She placed fresh flowers in the vase.", "He bought a new vase for the dining table."]},
+    {"word": "whale", "definition": "A very large marine mammal with a streamlined hairless body, a horizontal tail fin, and a blowhole on top of the head for breathing", "examples": ["We saw a whale breach the surface of the ocean.", "Whales are known for their size and intelligence."]},
+    {"word": "xylophone", "definition": "A musical instrument played by striking a row of wooden bars of graduated length with one or more small wooden or plastic beaters", "examples": ["He played a tune on the xylophone.", "She learned to play the xylophone in music class."]},
+    {"word": "yacht", "definition": "A medium-sized sailing boat equipped for cruising or racing", "examples": ["They sailed their yacht across the Atlantic.", "She enjoyed the ocean breeze on the yacht."]},
+    {"word": "zebra", "definition": "An African wild horse with black-and-white stripes and an erect mane", "examples": ["They saw a herd of zebras on the savannah.", "Zebras use their stripes for camouflage."]},
+    {"word": "airplane", "definition": "A powered flying vehicle with fixed wings and a weight greater than that of the air it displaces", "examples": ["She boarded the airplane for her flight.", "Airplanes revolutionized long-distance travel."]},
+    {"word": "boat", "definition": "A small vessel for traveling over water, propelled by oars, sails, or an engine", "examples": ["They went fishing in a small boat.", "She learned to row a boat at summer camp."]},
+    {"word": "chair", "definition": "A separate seat for one person, typically with a back and four legs", "examples": ["He pulled up a chair to the table.", "She sat in a comfortable chair by the fireplace."]},
+    {"word": "desk", "definition": "A piece of furniture with a flat or sloped surface, typically used for working at with a computer, reading, writing, or drawing", "examples": ["She organized her papers on the desk.", "He bought a new desk for his home office."]},
+    {"word": "egg", "definition": "A hard-shelled oval or round object laid by a female bird, reptile, fish, or invertebrate, usually containing a developing embryo", "examples": ["She cracked an egg into the bowl.", "They decorated eggs for Easter."]},
+    {"word": "frog", "definition": "A tailless amphibian with a short squat body, moist smooth skin, and very long hind legs for leaping", "examples": ["They heard frogs croaking by the pond.", "She studied frogs in biology class."]},
+    {"word": "guitar", "definition": "A stringed musical instrument with a fretted fingerboard, typically incurved sides, and six or twelve strings, played by plucking or strumming with the fingers or a plectrum", "examples": ["He played a song on the guitar.", "She took guitar lessons as a child."]},
+    {"word": "helicopter", "definition": "A type of aircraft that derives both lift and propulsion from one or more sets of horizontally revolving overhead rotors", "examples": ["They heard a helicopter flying overhead.", "A helicopter landed on the hospital roof."]},
+    {"word": "igloo", "definition": "A dome-shaped Eskimo house, typically built from blocks of solid snow", "examples": ["They built an igloo in the Arctic.", "She learned about igloos in geography class."]},
+    {"word": "jellyfish", "definition": "A free-swimming marine coelenterate with a jellylike bell- or saucer-shaped body that is typically transparent and has stinging tentacles around the edge", "examples": ["They saw jellyfish while snorkeling.", "Jellyfish can be found in oceans worldwide."]},
+    {"word": "kangaroo", "definition": "A large plant-eating marsupial with a long powerful tail and strongly developed hind limbs that enable it to travel by leaping", "examples": ["They saw kangaroos in Australia.", "Kangaroos carry their young in a pouch."]},
+    {"word": "lamp", "definition": "A device for giving light, typically consisting of a base and a shade
+
+
+
+
+
+
