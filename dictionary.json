@@ -1,4 +1,4 @@
 [
-    {"word": "りんご", "definition": "木に実る果物", "examples": ["私はりんごが好きです。", "彼女はかごいっぱいのりんごを買った。"]},
-    {"word": "バナナ", "definition": "長い曲がった果物", "examples": ["彼女は朝バナナを食べた。", "バナナにはカリウムが豊富です。"]}
+    {"english": "word1", "japanese": "単語1の日本語訳", "definition": "単語1の定義", "examples": ["単語1の例文1", "単語1の例文2"], "type": "名詞"},
+    {"english": "word2", "japanese": "単語2の日本語訳", "definition": "単語2の定義", "examples": ["単語2の例文1", "単語2の例文2"], "type": "動詞"},
 ]
