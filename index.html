@@ -4,48 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dictionary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .word {
+            font-weight: bold;
+        }
+        .definition {
+            margin-bottom: 10px;
+        }
+        .examples {
+            margin-left: 20px;
+            list-style-type: square;
+        }
+    </style>
     <script>
-        let currentPage = 1;
-        const itemsPerPage = 5;
         let dictionary = [];
 
         async function fetchDictionary() {
             const response = await fetch('dictionary.json');
             dictionary = await response.json();
-            displayPage(currentPage);
+            displayDictionary();
         }
 
-        function displayPage(page) {
-            const start = (page - 1) * itemsPerPage;
-            const end = start + itemsPerPage;
-            const pageItems = dictionary.slice(start, end);
+        function displayDictionary() {
+            const dictionaryContainer = document.getElementById('dictionary');
+            dictionaryContainer.innerHTML = '';
 
-            const list = document.getElementById('dictionaryList');
-            list.innerHTML = '';
+            dictionary.forEach(item => {
+                const wordElement = document.createElement('div');
+                wordElement.classList.add('word');
+                wordElement.textContent = item.word;
 
-            pageItems.forEach(item => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `${item.word}: ${item.definition}`;
-                list.appendChild(listItem);
+                const definitionElement = document.createElement('div');
+                definitionElement.classList.add('definition');
+                definitionElement.textContent = `Definition: ${item.definition}`;
+
+                const examplesElement = document.createElement('ul');
+                examplesElement.classList.add('examples');
+                examplesElement.innerHTML = item.examples.map(example => `<li>${example}</li>`).join('');
+
+                dictionaryContainer.appendChild(wordElement);
+                dictionaryContainer.appendChild(definitionElement);
+                dictionaryContainer.appendChild(examplesElement);
+
+                const divider = document.createElement('hr');
+                dictionaryContainer.appendChild(divider);
             });
-
-            document.getElementById('currentPage').textContent = `Page ${currentPage}`;
-            document.getElementById('prevButton').disabled = currentPage === 1;
-            document.getElementById('nextButton').disabled = end >= dictionary.length;
-        }
-
-        function prevPage() {
-            if (currentPage > 1) {
-                currentPage--;
-                displayPage(currentPage);
-            }
-        }
-
-        function nextPage() {
-            if ((currentPage * itemsPerPage) < dictionary.length) {
-                currentPage++;
-                displayPage(currentPage);
-            }
         }
 
         window.onload = fetchDictionary;
@@ -53,11 +59,6 @@
 </head>
 <body>
     <h1>Dictionary</h1>
-    <ul id="dictionaryList"></ul>
-    <div>
-        <button id="prevButton" onclick="prevPage()">Previous</button>
-        <span id="currentPage"></span>
-        <button id="nextButton" onclick="nextPage()">Next</button>
-    </div>
+    <div id="dictionary"></div>
 </body>
 </html>
