@@ -1,4 +1,4 @@
 [
-    {"english": "word1", "japanese": "単語1の日本語訳", "definition": "単語1の定義", "examples": ["単語1の例文1", "単語1の例文2"], "type": "名詞"},
-    {"english": "word2", "japanese": "単語2の日本語訳", "definition": "単語2の定義", "examples": ["単語2の例文1", "単語2の例文2"], "type": "動詞"},
+    {"english": "a", "japanese": "は", "definition": "助詞", "examples": ["til 1 dai"], "type": "助詞"},
+    {"english": "vi", "japanese": "を", "definition": "助詞", "examples": ["単語2の例文1"], "type": "助詞"},
 ]
