@@ -3,166 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>辞書</title>
+    <title>辞書アプリ</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .word {
-            font-weight: bold;
-            cursor: pointer;
-            color: blue;
-            text-decoration: underline;
-            margin-bottom: 5px;
-        }
-        .definition {
-            display: none;
-            margin-bottom: 10px;
-        }
-        .examples {
-            margin-left: 20px;
-            list-style-type: square;
-        }
-        .toggle-button {
-            background-color: #00aa00;
-            color: white;
+        /* スタイルはここに記述 */
+        button {
+            background-color: #00aa00; /* ボタンの背景色 */
+            color: white; /* ボタンのテキスト色 */
+            padding: 10px 20px;
             border: none;
-            padding: 5px 10px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 14px;
-            margin-top: 5px;
             cursor: pointer;
         }
-        .details {
-            margin-left: 20px;
-            margin-bottom: 10px;
-        }
-        .page-buttons {
-            margin-top: 10px;
-        }
-        .page-buttons button {
-            margin-right: 5px;
+        #dictionary {
+            margin-top: 20px;
         }
     </style>
-    <script>
-        let dictionary = [];
-        let currentPage = 1;
-        const pageSize = 20; // 1ページに表示する単語の数
-
-        async function fetchDictionary() {
-            try {
-                const response = await fetch('dictionary.json');
-                if (!response.ok) {
-                    throw new Error('ファイルの読み込みに失敗しました。');
-                }
-                dictionary = await response.json();
-                displayDictionary();
-            } catch (error) {
-                console.error('fetchエラー:', error);
-            }
-        }
-
-        function displayDictionary() {
-            const startIndex = (currentPage - 1) * pageSize;
-            const endIndex = startIndex + pageSize;
-            const wordsToShow = dictionary.slice(startIndex, endIndex);
-
-            const dictionaryContainer = document.getElementById('dictionary');
-            dictionaryContainer.innerHTML = '';
-
-            wordsToShow.forEach(item => {
-                const wordElement = document.createElement('div');
-                wordElement.classList.add('word');
-                wordElement.textContent = item.english;
-                wordElement.onclick = () => toggleDetails(wordElement.nextSibling);
-
-                const japaneseElement = document.createElement('div');
-                japaneseElement.classList.add('details');
-                japaneseElement.textContent = `日本語訳: ${item.japanese}`;
-
-                const definitionElement = document.createElement('div');
-                definitionElement.classList.add('definition');
-                definitionElement.textContent = `意味: ${item.definition}`;
-
-                const examplesElement = document.createElement('ul');
-                examplesElement.classList.add('examples');
-                examplesElement.innerHTML = item.examples.map(example => `<li>${example}</li>`).join('');
-
-                const toggleButton = document.createElement('button');
-                toggleButton.classList.add('toggle-button');
-                toggleButton.textContent = '詳細を表示';
-                toggleButton.onclick = () => toggleDetails(definitionElement, examplesElement, toggleButton, japaneseElement);
-
-                dictionaryContainer.appendChild(wordElement);
-                dictionaryContainer.appendChild(toggleButton);
-                dictionaryContainer.appendChild(japaneseElement);
-                dictionaryContainer.appendChild(definitionElement);
-                dictionaryContainer.appendChild(examplesElement);
-
-                const divider = document.createElement('hr');
-                dictionaryContainer.appendChild(divider);
-            });
-
-            renderPageButtons();
-        }
-
-        function toggleDetails(definitionElement, examplesElement, toggleButton, japaneseElement) {
-            if (definitionElement.style.display === 'none') {
-                definitionElement.style.display = 'block';
-                examplesElement.style.display = 'block';
-                japaneseElement.style.display = 'block';
-                toggleButton.textContent = '詳細を非表示';
-            } else {
-                definitionElement.style.display = 'none';
-                examplesElement.style.display = 'none';
-                japaneseElement.style.display = 'none';
-                toggleButton.textContent = '詳細を表示';
-            }
-        }
-
-        function previousPage() {
-            if (currentPage > 1) {
-                currentPage--;
-                displayDictionary();
-            }
-        }
-
-        function nextPage() {
-            const maxPage = Math.ceil(dictionary.length / pageSize);
-            if (currentPage < maxPage) {
-                currentPage++;
-                displayDictionary();
-            }
-        }
-
-        function renderPageButtons() {
-            const maxPage = Math.ceil(dictionary.length / pageSize);
-            const pageButtonsContainer = document.getElementById('pageButtons');
-            pageButtonsContainer.innerHTML = '';
-
-            if (currentPage > 1) {
-                const previousButton = document.createElement('button');
-                previousButton.textContent = '戻る';
-                previousButton.onclick = previousPage;
-                pageButtonsContainer.appendChild(previousButton);
-            }
-
-            if (currentPage < maxPage) {
-                const nextButton = document.createElement('button');
-                nextButton.textContent = '進む';
-                nextButton.onclick = nextPage;
-                pageButtonsContainer.appendChild(nextButton);
-            }
-        }
-
-        window.onload = fetchDictionary;
-    </script>
 </head>
 <body>
-    <h1>辞書</h1>
-    <div id="dictionary"></div>
-    <div id="pageButtons" class="page-buttons"></div>
+    <h1>英和辞書アプリ</h1>
+    
+    <!-- 入力フォームと検索ボタン -->
+    <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="単語を入力">
+        <button type="submit">検索</button>
+    </form>
+
+    <!-- 辞書データ表示エリア -->
+    <div id="dictionary">
+        <!-- 検索結果や辞書データはここに表示される -->
+    </div>
+
+    <!-- 戻ると進むのボタン -->
+    <div id="pagination">
+        <button id="prevPage">戻る</button>
+        <button id="nextPage">進む</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 辞書データの例
+        const dictionaryData = [
+            {"english": "the", "japanese": "その", "definition": "話されている特定のものや、すでに言及されたものを指す", "examples": ["He's the man I saw yesterday.", "The cat is on the roof."], "type": "article"},
+            {"english": "of", "japanese": "の", "definition": "一部と全体の関係を表す", "examples": ["The pages of the book were torn.", "The top of the mountain was covered in snow."], "type": "preposition"},
+            {"english": "and", "japanese": "そして", "definition": "単語や文のグループをつなぐために使われる", "examples": ["Bread and butter", "He is tall and handsome."], "type": "conjunction"},
+            {"english": "a", "japanese": "一つの", "definition": "初めて言及する人や物を指すときに使われる", "examples": ["I saw a cat in the garden.", "She's got a new car."], "type": "article"},
+            {"english": "in", "japanese": "で", "definition": "何かによって囲まれた状態や内部を表す", "examples": ["She is in the room.", "The cat is in the box."], "type": "preposition"},
+            // 他の単語も同様に追加する
+        ];
+
+        const itemsPerPage = 10; // 1ページあたりの表示数
+        let currentPage = 0; // 現在のページ
+
+        // 初期表示
+        showPage(currentPage);
+
+        // 検索フォームのイベントリスナーを設定
+        const searchForm = document.getElementById('searchForm');
+        const searchInput = document.getElementById('searchInput');
+        searchForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // フォームのデフォルトの動作をキャンセル
+
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            const foundWords = dictionaryData.filter(word => word.english.toLowerCase() === searchTerm);
+            
+            if (foundWords.length > 0) {
+                displayWord(foundWords[0]); // 見つかった単語を表示する関数を呼び出す
+            } else {
+                displayMessage("単語が見つかりませんでした。");
+            }
+        });
+
+        // 戻るボタンのイベントリスナー
+        const prevButton = document.getElementById('prevPage');
+        prevButton.addEventListener('click', function() {
+            if (currentPage > 0) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        });
+
+        // 進むボタンのイベントリスナー
+        const nextButton = document.getElementById('nextPage');
+        nextButton.addEventListener('click', function() {
+            if (currentPage < Math.ceil(dictionaryData.length / itemsPerPage) - 1) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        });
+
+        // ページごとのデータ表示
+        function showPage(page) {
+            const start = page * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedData = dictionaryData.slice(start, end);
+            
+            const dictionaryDiv = document.getElementById('dictionary');
+            dictionaryDiv.innerHTML = ''; // 辞書データ表示エリアをクリア
+
+            paginatedData.forEach(word => {
+                const wordDiv = document.createElement('div');
+                wordDiv.innerHTML = `
+                    <h2>${word.english}</h2>
+                    <p><strong>日本語訳:</strong> ${word.japanese}</p>
+                    <p><strong>定義:</strong> ${word.definition}</p>
+                    <p><strong>例文:</strong> ${word.examples.join("<br>")}</p>
+                    <p><strong>タイプ:</strong> ${word.type}</p>
+                `;
+                dictionaryDiv.appendChild(wordDiv);
+            });
+
+            // ページ数に応じてボタンの有効・無効を切り替える
+            prevButton.disabled = (page === 0);
+            nextButton.disabled = (page >= Math.ceil(dictionaryData.length / itemsPerPage) - 1);
+        }
+
+        // 単語を表示する関数
+        function displayWord(word) {
+            const dictionaryDiv = document.getElementById('dictionary');
+            dictionaryDiv.innerHTML = `
+                <h2>${word.english}</h2>
+                <p><strong>日本語訳:</strong> ${word.japanese}</p>
+                <p><strong>定義:</strong> ${word.definition}</p>
+                <p><strong>例文:</strong> ${word.examples.join("<br>")}</p>
+                <p><strong>タイプ:</strong> ${word.type}</p>
+            `;
+        }
+
+        // メッセージを表示する関数
+        function displayMessage(message) {
+            const dictionaryDiv = document.getElementById('dictionary');
+            dictionaryDiv.innerHTML = `<p>${message}</p>`;
+        }
+    </script>
 </body>
 </html>
