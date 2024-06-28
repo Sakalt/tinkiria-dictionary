@@ -6,30 +6,17 @@
     <title>辞書アプリ</title>
     <style>
         /* スタイルはここに記述 */
-        button {
-            background-color: #00aa00; /* ボタンの背景色 */
-            color: white; /* ボタンのテキスト色 */
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-        }
         #dictionary {
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>英和辞書アプリ</h1>
-    
-    <!-- 入力フォームと検索ボタン -->
-    <form id="searchForm">
-        <input type="text" id="searchInput" placeholder="単語を入力">
-        <button type="submit">検索</button>
-    </form>
+    <h1>辞書アプリ</h1>
 
     <!-- 辞書データ表示エリア -->
     <div id="dictionary">
-        <!-- 検索結果や辞書データはここに表示される -->
+        <!-- JSONデータがここに表示される -->
     </div>
 
     <!-- 戻ると進むのボタン -->
@@ -40,62 +27,71 @@
 
     <!-- JavaScript -->
     <script>
-        // 辞書データの例
-        const dictionaryData = [
-            {"english": "the", "japanese": "その", "definition": "話されている特定のものや、すでに言及されたものを指す", "examples": ["He's the man I saw yesterday.", "The cat is on the roof."], "type": "article"},
-            {"english": "of", "japanese": "の", "definition": "一部と全体の関係を表す", "examples": ["The pages of the book were torn.", "The top of the mountain was covered in snow."], "type": "preposition"},
-            {"english": "and", "japanese": "そして", "definition": "単語や文のグループをつなぐために使われる", "examples": ["Bread and butter", "He is tall and handsome."], "type": "conjunction"},
-            {"english": "a", "japanese": "一つの", "definition": "初めて言及する人や物を指すときに使われる", "examples": ["I saw a cat in the garden.", "She's got a new car."], "type": "article"},
-            {"english": "in", "japanese": "で", "definition": "何かによって囲まれた状態や内部を表す", "examples": ["She is in the room.", "The cat is in the box."], "type": "preposition"},
-            // 他の単語も同様に追加する
-        ];
+        // JSONデータのURL
+        const jsonUrl = 'dictionary.json';
 
-        const itemsPerPage = 10; // 1ページあたりの表示数
-        let currentPage = 0; // 現在のページ
-
-        // 初期表示
-        showPage(currentPage);
-
-        // 検索フォームのイベントリスナーを設定
-        const searchForm = document.getElementById('searchForm');
-        const searchInput = document.getElementById('searchInput');
-        searchForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // フォームのデフォルトの動作をキャンセル
-
-            const searchTerm = searchInput.value.trim().toLowerCase();
-            const foundWords = dictionaryData.filter(word => word.english.toLowerCase() === searchTerm);
-            
-            if (foundWords.length > 0) {
-                displayWord(foundWords[0]); // 見つかった単語を表示する関数を呼び出す
-            } else {
-                displayMessage("単語が見つかりませんでした。");
+        // JSONデータを取得して表示する関数
+        async function fetchDictionaryData() {
+            try {
+                const response = await fetch(jsonUrl);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const jsonData = await response.json();
+                displayDictionary(jsonData);
+            } catch (error) {
+                console.error('fetch エラー:', error);
             }
-        });
+        }
 
-        // 戻るボタンのイベントリスナー
-        const prevButton = document.getElementById('prevPage');
-        prevButton.addEventListener('click', function() {
-            if (currentPage > 0) {
-                currentPage--;
-                showPage(currentPage);
-            }
-        });
+        // 辞書データを表示する関数
+        function displayDictionary(dictionary) {
+            const dictionaryDiv = document.getElementById('dictionary');
+            dictionaryDiv.innerHTML = ''; // 辞書データ表示エリアをクリア
 
-        // 進むボタンのイベントリスナー
-        const nextButton = document.getElementById('nextPage');
-        nextButton.addEventListener('click', function() {
-            if (currentPage < Math.ceil(dictionaryData.length / itemsPerPage) - 1) {
-                currentPage++;
-                showPage(currentPage);
-            }
-        });
+            dictionary.forEach(word => {
+                const wordDiv = document.createElement('div');
+                wordDiv.innerHTML = `
+                    <h2>${word.english}</h2>
+                    <p><strong>日本語訳:</strong> ${word.japanese}</p>
+                    <p><strong>定義:</strong> ${word.definition}</p>
+                    <p><strong>例文:</strong> ${word.examples.join("<br>")}</p>
+                    <p><strong>タイプ:</strong> ${word.type}</p>
+                `;
+                dictionaryDiv.appendChild(wordDiv);
+            });
+
+            // ページングボタンの初期化
+            const prevButton = document.getElementById('prevPage');
+            const nextButton = document.getElementById('nextPage');
+
+            // 戻るボタンのイベントリスナー
+            prevButton.addEventListener('click', function() {
+                if (currentPage > 0) {
+                    currentPage--;
+                    showPage(currentPage, dictionary);
+                }
+            });
+
+            // 進むボタンのイベントリスナー
+            nextButton.addEventListener('click', function() {
+                if (currentPage < Math.ceil(dictionary.length / itemsPerPage) - 1) {
+                    currentPage++;
+                    showPage(currentPage, dictionary);
+                }
+            });
+
+            // 初期ページの表示
+            showPage(currentPage, dictionary);
+        }
 
         // ページごとのデータ表示
-        function showPage(page) {
+        function showPage(page, dictionary) {
+            const itemsPerPage = 10; // 1ページあたりの表示数
             const start = page * itemsPerPage;
             const end = start + itemsPerPage;
-            const paginatedData = dictionaryData.slice(start, end);
-            
+            const paginatedData = dictionary.slice(start, end);
+
             const dictionaryDiv = document.getElementById('dictionary');
             dictionaryDiv.innerHTML = ''; // 辞書データ表示エリアをクリア
 
@@ -113,26 +109,11 @@
 
             // ページ数に応じてボタンの有効・無効を切り替える
             prevButton.disabled = (page === 0);
-            nextButton.disabled = (page >= Math.ceil(dictionaryData.length / itemsPerPage) - 1);
+            nextButton.disabled = (page >= Math.ceil(dictionary.length / itemsPerPage) - 1);
         }
 
-        // 単語を表示する関数
-        function displayWord(word) {
-            const dictionaryDiv = document.getElementById('dictionary');
-            dictionaryDiv.innerHTML = `
-                <h2>${word.english}</h2>
-                <p><strong>日本語訳:</strong> ${word.japanese}</p>
-                <p><strong>定義:</strong> ${word.definition}</p>
-                <p><strong>例文:</strong> ${word.examples.join("<br>")}</p>
-                <p><strong>タイプ:</strong> ${word.type}</p>
-            `;
-        }
-
-        // メッセージを表示する関数
-        function displayMessage(message) {
-            const dictionaryDiv = document.getElementById('dictionary');
-            dictionaryDiv.innerHTML = `<p>${message}</p>`;
-        }
+        // ページ読み込み時に辞書データを取得する
+        window.onload = fetchDictionaryData;
     </script>
 </body>
 </html>
