@@ -1,4 +1,4 @@
 [
-    {"english": "a", "japanese": "は", "definition": "助詞", "examples": ["til 1 dai"], "type": "助詞"},
-    {"english": "vi", "japanese": "を", "definition": "助詞", "examples": ["単語2の例文1"], "type": "助詞"}
+    {"english": "a", "japanese": "は", "definition": "助詞", "examples": ["til a dai"], "type": "助詞"},
+    {"english": "vi", "japanese": "を", "definition": "助詞", "examples": ["til vi tur"], "type": "助詞"}
 ]
