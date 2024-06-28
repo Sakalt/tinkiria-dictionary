@@ -9,6 +9,20 @@
         #dictionary {
             margin-top: 20px;
         }
+        
+        /* ボタンのスタイル */
+        button {
+            background-color: #00aa00;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        
+        button:disabled {
+            background-color: #aaaaaa; /* 無効なボタンの色 */
+        }
     </style>
 </head>
 <body>
@@ -21,7 +35,7 @@
 
     <!-- 戻ると進むのボタン -->
     <div id="pagination">
-        <button id="prevPage">戻る</button>
+        <button id="prevPage" disabled>戻る</button>
         <button id="nextPage">進む</button>
     </div>
 
@@ -29,6 +43,7 @@
     <script>
         // JSONデータのURL
         const jsonUrl = 'dictionary.json';
+        let currentPage = 0; // currentPage の初期化
 
         // JSONデータを取得して表示する関数
         async function fetchDictionaryData() {
