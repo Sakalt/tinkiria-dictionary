@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dictionary</title>
+    <title>辞書</title>
     <style>
         body {
             font-family: Arial, sans-serif;
         }
         .word {
             font-weight: bold;
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
         }
         .definition {
             margin-bottom: 10px;
+            display: none;
         }
         .examples {
             margin-left: 20px;
@@ -36,10 +40,11 @@
                 const wordElement = document.createElement('div');
                 wordElement.classList.add('word');
                 wordElement.textContent = item.word;
+                wordElement.onclick = () => toggleDefinition(wordElement.nextSibling);
 
                 const definitionElement = document.createElement('div');
                 definitionElement.classList.add('definition');
-                definitionElement.textContent = `Definition: ${item.definition}`;
+                definitionElement.textContent = `意味: ${item.definition}`;
 
                 const examplesElement = document.createElement('ul');
                 examplesElement.classList.add('examples');
@@ -54,11 +59,19 @@
             });
         }
 
+        function toggleDefinition(element) {
+            if (element.style.display === 'none') {
+                element.style.display = 'block';
+            } else {
+                element.style.display = 'none';
+            }
+        }
+
         window.onload = fetchDictionary;
     </script>
 </head>
 <body>
-    <h1>Dictionary</h1>
+    <h1>辞書</h1>
     <div id="dictionary"></div>
 </body>
 </html>
