@@ -16,4 +16,4 @@
     {"english": "at", "japanese": "で", "definition": "場所や位置を示す", "examples": ["He is at home.", "The book is on the table."], "type": "preposition"},
     {"english": "but", "japanese": "しかし", "definition": "すでに言及された内容と対照的なフレーズや節を導入するために使われる", "examples": ["He was tired but happy.", "The weather was cold but clear."], "type": "conjunction"},
     {"english": "with", "japanese": "と", "definition": "（他の人や物と）一緒に", "examples": ["She went with her friends.", "He is sitting with his brother."], "type": "preposition"}
-]
+],
