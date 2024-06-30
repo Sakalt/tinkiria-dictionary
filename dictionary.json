@@ -18,5 +18,7 @@
     {"tisian": "tend", "japanese": "串", "definition": "串を表す", "examples": ["tendが刺さる"]},
     {"tisian": "yag", "japanese": "山", "definition": "山を表す", "examples": ["yagが高い"]},
     {"tisian": "yatok", "japanese": "林", "definition": "林を表す", "examples": ["yatokが広がる"]},
-    {"tisian": "saklon", "japanese": "森", "definition": "森を表す", "examples": ["saklonが深い"]}
+    {"tisian": "klon", "japanese": "森", "definition": "森を表す", "examples": ["saklonが深い"]}
+    {"tisian": "poves", "japanese": "芹", "definition": "poves za tista"}
+    {"tisian": "nabet", "japanese": "苺", "definition": "nabes za tista"}
 ]
