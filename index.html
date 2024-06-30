@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #dictionary {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .word-entry {
+            margin-bottom: 20px;
+        }
+        .word-entry h2 {
+            margin: 0;
+            color: #00aa00;
+        }
+        .word-entry p {
+            margin: 5px 0;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .buttons button {
+            background-color: #00aa00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .buttons button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div id="dictionary">
+        <div id="word-container"></div>
+        <div class="buttons">
+            <button id="prevButton" onclick="showPreviousPage()">前へ</button>
+            <button id="nextButton" onclick="showNextPage()">次へ</button>
+        </div>
+    </div>
+
+    <script>
+        let dictionaryData = [];
+        let currentPage = 0;
+        const wordsPerPage = 10;
+
+        async function fetchDictionaryData() {
+            try {
+                const response = await fetch('dictionary.json');
+                dictionaryData = await response.json();
+                displayDictionary();
+            } catch (error) {
+                console.error('Error fetching dictionary data:', error);
+            }
+        }
+
+        function displayDictionary() {
+            const wordContainer = document.getElementById('word-container');
+            wordContainer.innerHTML = '';
+
+            const start = currentPage * wordsPerPage;
+            const end = start + wordsPerPage;
+            const currentWords = dictionaryData.slice(start, end);
+
+            currentWords.forEach(word => {
+                const wordEntry = document.createElement('div');
+                wordEntry.className = 'word-entry';
+                
+                const wordTitle = document.createElement('h2');
+                wordTitle.textContent = word.english + ' - ' + word.japanese;
+                wordEntry.appendChild(wordTitle);
+                
+                const wordDefinition = document.createElement('p');
+                wordDefinition.textContent = '定義: ' + word.definition;
+                wordEntry.appendChild(wordDefinition);
+
+                const wordExamples = document.createElement('p');
+                wordExamples.textContent = '例: ' + word.examples.join(', ');
+                wordEntry.appendChild(wordExamples);
+                
+                wordContainer.appendChild(wordEntry);
+            });
+
+            document.getElementById('prevButton').disabled = currentPage === 0;
+            document.getElementById('nextButton').disabled = end >= dictionaryData.length;
+        }
+
+        function showPreviousPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                displayDictionary();
+            }
+        }
+
+        function showNextPage() {
+            if ((currentPage + 1) * wordsPerPage < dictionaryData.length) {
+                currentPage++;
+                displayDictionary();
+            }
+        }
+
+        window.onload = fetchDictionaryData;
+    </script>
+</body>
+</html>
