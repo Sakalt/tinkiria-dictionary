@@ -18,6 +18,5 @@
     {"tisian": "tend", "japanese": "串", "definition": "串を表す", "examples": ["tendが刺さる"]},
     {"tisian": "yag", "japanese": "山", "definition": "山を表す", "examples": ["yagが高い"]},
     {"tisian": "yatok", "japanese": "林", "definition": "林を表す", "examples": ["yatokが広がる"]},
-    {"tisian": "klon", "japanese": "森", "definition": "森を表す", "examples": ["saklonが深い"]},
-    {"tisian": "tenpo", "japanese": "薬", "definition": "症状を直すもの。", "examples": ["tenpo taf tista"]}
+    {"tisian": "klon", "japanese": "森", "definition": "森を表す", "examples": ["klonが深い"]}
 ]
