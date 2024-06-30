@@ -50,7 +50,7 @@
 <body>
     <div id="dictionary">
         <div id="dictionary-info">
-            <p id="dictionary-description">これはチシア語の単語を集めた辞書です。</p>
+            <p id="dictionary-description">これはチシア語の基本的な単語を集めた辞書です。</p>
             <p id="current-status">現在の単語数: <span id="word-count"></span></p>
             <p id="example-count">総例文数: <span id="total-examples"></span></p>
             <p id="letter-frequencies">全文字の割合: <span id="letter-frequency"></span></p>
@@ -82,11 +82,6 @@
                 console.error('Error fetching dictionary data:', error);
             }
         }
-         let dictionaryData = [];
-        let filteredData = [];
-        let currentPage = 0;
-        const wordsPerPage = 10;
-        const sortOrder = ['S', 'Z', 'T', 'D', 'K', 'G', 'F', 'V', 'P', 'B', 'Y', 'H', 'X', 'J', 'N', 'M', 'L', 'R', 'W',’A','I','U','E','O','s', 'z', 't', 'd', 'k', 'g', 'f', 'v', 'p', 'b', 'y', 'h', 'x', 'j', 'n', 'm', 'l', 'r', 'w','a', 'i', 'u', 'e', 'o'];
 
         function updateDictionaryInfo() {
             document.getElementById('word-count').textContent = filteredData.length;
@@ -101,7 +96,12 @@
 
         function displayDictionary() {
             const wordContainer = document.getElementById('word-container');
-            
+            wordContainer.innerHTML = '';
+
+            const start = currentPage * wordsPerPage;
+            const end = start + wordsPerPage;
+            const currentWords = filteredData.slice(start, end);
+
             currentWords.forEach(word => {
                 const wordEntry = document.createElement('div');
                 wordEntry.className = 'word-entry';
