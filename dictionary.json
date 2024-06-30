@@ -47,5 +47,9 @@
     {"english": "win", "japanese": "意志", "definition": "未来の意図や予定を示す", "examples": ["I will go to the store.", "She will call you later."], "type": "verb"},
     {"english": "gaf", "japanese": "どのように", "definition": "方法や手段を尋ねる", "examples": ["How are you?", "How does this work?"], "type": "adverb"},
     {"english": "ja", "japanese": "言った", "definition": "言葉を発したことを示す", "examples": ["He said he was coming.", "She said goodbye."], "type": "verb"},
-    {"english": "i", "japanese": "その", "definition": "すでに言及された物や動物に関連する", "examples": ["The cat licked its paw.", "Its color is beautiful."], "type": "pronoun"}
+    {"english": "i", "japanese": "その", "definition": "すでに言及された物や動物に関連する", "examples": ["The cat licked its paw.", "Its color is beautiful."], "type": "pronoun"},
+    {"english": "ke", "japanese": "形", "definition": "図形", "examples": ["talv ke","talv des"], "type": "noun"},
+    {"english": "talv", "japanese": "真。本当", "definition": "真実", "examples": ["Which book is yours?", "Which do you prefer?"], "type": "noun"},
+    {"english": "des", "japanese": "事。こと", "definition": "物", "examples": ["talv des"], "type": "noun"},
+    {"english": "diko", "japanese": "でしょ", "definition": "やさしい指摘", "examples": ["tol talv diko."], "type": "?"},
 ]
