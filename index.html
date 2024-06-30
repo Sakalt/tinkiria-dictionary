@@ -82,6 +82,11 @@
                 console.error('Error fetching dictionary data:', error);
             }
         }
+         let dictionaryData = [];
+        let filteredData = [];
+        let currentPage = 0;
+        const wordsPerPage = 10;
+        const sortOrder = ['S', 'Z', 'T', 'D', 'K', 'G', 'F', 'V', 'P', 'B', 'Y', 'H', 'X', 'J', 'N', 'M', 'L', 'R', 'W',’A','I','U','E','O','s', 'z', 't', 'd', 'k', 'g', 'f', 'v', 'p', 'b', 'y', 'h', 'x', 'j', 'n', 'm', 'l', 'r', 'w','a', 'i', 'u', 'e', 'o'];
 
         function updateDictionaryInfo() {
             document.getElementById('word-count').textContent = filteredData.length;
