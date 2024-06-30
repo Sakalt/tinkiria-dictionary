@@ -19,10 +19,10 @@
     {"tisian": "yag", "japanese": "山", "definition": "山を表す", "examples": ["yagが高い"]},
     {"tisian": "yatok", "japanese": "林", "definition": "林を表す", "examples": ["yatokが広がる"]},
     {"tisian": "klon", "japanese": "森", "definition": "森を表す", "examples": ["saklonが深い"]}
-    {"tisian": "poves", "japanese": "芹", "definition": "芹。"}
-    {"tisian": "nabet", "japanese": "苺", "definition": "バラ目バラ科の野菜"}
-    {"tisian": "tabem", "japanese": "芋", "definition": "芋。。"}
-    {"tisian": "tabemsatuma", "japanese": "さつまいも", "definition": "さつまいも"}
-    {"tisian": "leten", "japanese": "紅芋", "definition": "紅芋。"}
-    {"tisian": "tenpo", "japanese": "薬", "definition": "症状を直すもの。"}
+    {"tisian": "poves", "japanese": "芹", "definition": "芹。", "examples": ["poves taf tista"]}
+    {"tisian": "nabet", "japanese": "苺", "definition": "バラ目バラ科の野菜", "examples": ["nabet taf tista"]}
+    {"tisian": "tabem", "japanese": "芋", "definition": "芋。", "examples": ["tabem taf tista"]}
+    {"tisian": "tabemsatuma", "japanese": "さつまいも", "definition": "さつまいも", "examples": ["tabemsatuma taf tista"]}
+    {"tisian": "leten", "japanese": "紅芋", "definition": "紅芋。", "examples": ["leten taf tista"]}
+    {"tisian": "tenpo", "japanese": "薬", "definition": "症状を直すもの。", "examples": ["tenpo taf tista"]}
 ]
