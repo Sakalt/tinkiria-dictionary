@@ -18,5 +18,10 @@
     {"tisian": "tend", "japanese": "串", "definition": "串を表す", "examples": ["tendが刺さる"]},
     {"tisian": "yag", "japanese": "山", "definition": "山を表す", "examples": ["yagが高い"]},
     {"tisian": "yatok", "japanese": "林", "definition": "林を表す", "examples": ["yatokが広がる"]},
-    {"tisian": "klon", "japanese": "森", "definition": "森を表す", "examples": ["klonが深い"]}
+    {"tisian": "klon", "japanese": "森", "definition": "森を表す", "examples": ["klonが深い"]},
+    {"tisian": "mulci", "japanese": "芋", "definition": "じゃがいもを表す", "examples": ["mulci taf tistasas"]},
+    {"tisian": "iton", "japanese": "イチゴ", "definition": "イチゴを表す", "examples": ["iton za atenpa"]},
+    {"tisian": "atenpa", "japanese": "甘い", "definition": "糖分が多いことを表す", "examples": ["mulcituma za atenpa"]},
+    {"tisian": "mulcituma", "japanese": "サツマイモ", "definition": "サツマイモを表す", "examples": ["mulcituma taf tistasak"]},
+    {"tisian": "sasse", "japanese": "秋", "definition": "9-11月の間を表す", "examples": ["sasse mulcituma"]}
 ]
