@@ -52,8 +52,6 @@
         <div id="dictionary-info">
             <p id="dictionary-description">これはチシア語の基本的な単語を集めた辞書です。</p>
             <p id="current-status">現在の単語数: <span id="word-count"></span></p>
-            <p id="example-count">総例文数: <span id="total-examples"></span></p>
-            <p id="letter-frequencies">全文字の割合: <span id="letter-frequency"></span></p>
             <p id="page-status">現在のページ: <span id="current-page"></span> / <span id="total-pages"></span></p>
             <input type="text" id="searchInput" placeholder="単語を検索">
             <button id="searchButton" onclick="searchDictionary()">検索</button>
@@ -86,12 +84,6 @@
         function updateDictionaryInfo() {
             document.getElementById('word-count').textContent = filteredData.length;
             document.getElementById('total-pages').textContent = Math.ceil(filteredData.length / wordsPerPage);
-
-            const totalExamples = filteredData.reduce((sum, word) => sum + word.examples.length, 0);
-            document.getElementById('total-examples').textContent = totalExamples;
-
-            const letterFrequency = calculateTotalLetterFrequency(filteredData);
-            document.getElementById('letter-frequency').textContent = letterFrequency;
         }
 
         function displayDictionary() {
@@ -117,6 +109,15 @@
                 const wordExamples = document.createElement('p');
                 wordExamples.textContent = '例: ' + word.examples.join(', ');
                 wordEntry.appendChild(wordExamples);
+
+                const exampleCount = document.createElement('p');
+                exampleCount.textContent = '例文の数: ' + word.examples.length;
+                wordEntry.appendChild(exampleCount);
+
+                const letterFrequency = calculateLetterFrequency(word.tisian);
+                const letterFrequencyText = document.createElement('p');
+                letterFrequencyText.textContent = '文字の割合: ' + letterFrequency;
+                wordEntry.appendChild(letterFrequencyText);
                 
                 wordContainer.appendChild(wordEntry);
             });
@@ -126,21 +127,16 @@
             document.getElementById('current-page').textContent = currentPage + 1;
         }
 
-        function calculateTotalLetterFrequency(data) {
+        function calculateLetterFrequency(word) {
             const letterCounts = {};
-            let totalLetters = 0;
-
-            data.forEach(word => {
-                for (const letter of word.tisian) {
-                    totalLetters++;
-                    if (letterCounts[letter]) {
-                        letterCounts[letter]++;
-                    } else {
-                        letterCounts[letter] = 1;
-                    }
+            for (const letter of word) {
+                if (letterCounts[letter]) {
+                    letterCounts[letter]++;
+                } else {
+                    letterCounts[letter] = 1;
                 }
-            });
-
+            }
+            const totalLetters = word.length;
             const frequencies = Object.entries(letterCounts).map(([letter, count]) => {
                 return `${letter}: ${(count / totalLetters * 100).toFixed(2)}%`;
             });
