@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dictionary</title>
+    <title>辞書</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -41,10 +41,19 @@
             background-color: #ccc;
             cursor: not-allowed;
         }
+        #dictionary-info {
+            margin-bottom: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div id="dictionary">
+        <div id="dictionary-info">
+            <p id="dictionary-description">これは基本的な単語を集めた辞書です。</p>
+            <p id="current-status">現在の単語数: <span id="word-count"></span></p>
+            <p id="page-status">現在のページ: <span id="current-page"></span> / <span id="total-pages"></span></p>
+        </div>
         <div id="word-container"></div>
         <div class="buttons">
             <button id="prevButton" onclick="showPreviousPage()">前へ</button>
@@ -61,10 +70,16 @@
             try {
                 const response = await fetch('dictionary.json');
                 dictionaryData = await response.json();
+                updateDictionaryInfo();
                 displayDictionary();
             } catch (error) {
                 console.error('Error fetching dictionary data:', error);
             }
+        }
+
+        function updateDictionaryInfo() {
+            document.getElementById('word-count').textContent = dictionaryData.length;
+            document.getElementById('total-pages').textContent = Math.ceil(dictionaryData.length / wordsPerPage);
         }
 
         function displayDictionary() {
@@ -96,6 +111,7 @@
 
             document.getElementById('prevButton').disabled = currentPage === 0;
             document.getElementById('nextButton').disabled = end >= dictionaryData.length;
+            document.getElementById('current-page').textContent = currentPage + 1;
         }
 
         function showPreviousPage() {
