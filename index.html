@@ -102,11 +102,7 @@
         function displayDictionary() {
             const wordContainer = document.getElementById('word-container');
             wordContainer.innerHTML = '';
-
-            const start = currentPage * wordsPerPage;
-            const end = start + wordsPerPage;
-            const currentWords = filteredData.slice(start, end);
-
+            
             currentWords.forEach(word => {
                 const wordEntry = document.createElement('div');
                 wordEntry.className = 'word-entry';
