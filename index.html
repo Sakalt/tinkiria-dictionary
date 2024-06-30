@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>辞書</title>
+    <title>チシア語辞書</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,7 +50,7 @@
 <body>
     <div id="dictionary">
         <div id="dictionary-info">
-            <p id="dictionary-description">これは基本的な単語を集めた辞書です。</p>
+            <p id="dictionary-description">これはチシア語の基本的な単語を集めた辞書です。</p>
             <p id="current-status">現在の単語数: <span id="word-count"></span></p>
             <p id="page-status">現在のページ: <span id="current-page"></span> / <span id="total-pages"></span></p>
             <input type="text" id="searchInput" placeholder="単語を検索">
@@ -68,27 +68,11 @@
         let filteredData = [];
         let currentPage = 0;
         const wordsPerPage = 10;
-        const sortOrder = ['A', 'S', 'Z', 'T', 'D', 'K', 'G', 'F', 'V', 'P', 'B', 'Y', 'H', 'X', 'J', 'N', 'M', 'L', 'R', 'W', 'a', 'i', 'u', 'e', 'o'];
 
         async function fetchDictionaryData() {
             try {
                 const response = await fetch('dictionary.json');
                 dictionaryData = await response.json();
-                dictionaryData.sort((a, b) => {
-                    const aChar = a.english[0].toLowerCase();
-                    const bChar = b.english[0].toLowerCase();
-                    const aIsUpper = a.english[0].toUpperCase() === a.english[0];
-                    const bIsUpper = b.english[0].toUpperCase() === b.english[0];
-
-                    if (aIsUpper && !bIsUpper) return -1;
-                    if (!aIsUpper && bIsUpper) return 1;
-
-                    const aIndex = sortOrder.indexOf(aChar);
-                    const bIndex = sortOrder.indexOf(bChar);
-
-                    if (aIndex === bIndex) return 0;
-                    return aIndex - bIndex;
-                });
                 filteredData = dictionaryData;
                 updateDictionaryInfo();
                 displayDictionary();
@@ -115,7 +99,7 @@
                 wordEntry.className = 'word-entry';
                 
                 const wordTitle = document.createElement('h2');
-                wordTitle.textContent = word.english + ' - ' + word.japanese;
+                wordTitle.textContent = word.tisian + ' - ' + word.japanese;
                 wordEntry.appendChild(wordTitle);
                 
                 const wordDefinition = document.createElement('p');
@@ -150,7 +134,7 @@
 
         function searchDictionary() {
             const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            filteredData = dictionaryData.filter(word => word.english.toLowerCase().startsWith(searchInput));
+            filteredData = dictionaryData.filter(word => word.tisian.toLowerCase().startsWith(searchInput));
             currentPage = 0;
             updateDictionaryInfo();
             displayDictionary();
