@@ -109,6 +109,15 @@
                 const wordExamples = document.createElement('p');
                 wordExamples.textContent = '例: ' + word.examples.join(', ');
                 wordEntry.appendChild(wordExamples);
+
+                const exampleCount = document.createElement('p');
+                exampleCount.textContent = '例文の数: ' + word.examples.length;
+                wordEntry.appendChild(exampleCount);
+
+                const letterFrequency = calculateLetterFrequency(word.tisian);
+                const letterFrequencyText = document.createElement('p');
+                letterFrequencyText.textContent = '文字の割合: ' + letterFrequency;
+                wordEntry.appendChild(letterFrequencyText);
                 
                 wordContainer.appendChild(wordEntry);
             });
@@ -116,6 +125,22 @@
             document.getElementById('prevButton').disabled = currentPage === 0;
             document.getElementById('nextButton').disabled = end >= filteredData.length;
             document.getElementById('current-page').textContent = currentPage + 1;
+        }
+
+        function calculateLetterFrequency(word) {
+            const letterCounts = {};
+            for (const letter of word) {
+                if (letterCounts[letter]) {
+                    letterCounts[letter]++;
+                } else {
+                    letterCounts[letter] = 1;
+                }
+            }
+            const totalLetters = word.length;
+            const frequencies = Object.entries(letterCounts).map(([letter, count]) => {
+                return `${letter}: ${(count / totalLetters * 100).toFixed(2)}%`;
+            });
+            return frequencies.join(', ');
         }
 
         function showPreviousPage() {
