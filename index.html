@@ -2,174 +2,131 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>チシア語辞書</title>
+    <title>チシア辞書</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        #dictionary {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .word-entry {
-            margin-bottom: 20px;
-        }
-        .word-entry h2 {
-            margin: 0;
-            color: #00aa00;
-        }
-        .word-entry p {
-            margin: 5px 0;
-        }
-        .buttons {
-            display: flex;
-            justify-content: space-between;
-        }
-        .buttons button {
+        button {
             background-color: #00aa00;
             color: white;
             border: none;
             padding: 10px 20px;
-            border-radius: 4px;
+            margin: 5px;
             cursor: pointer;
         }
-        .buttons button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
+        button:hover {
+            background-color: #009900;
         }
-        #dictionary-info {
-            margin-bottom: 20px;
-            text-align: center;
+        .dictionary-entry {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
         }
     </style>
 </head>
 <body>
-    <div id="dictionary">
-        <div id="dictionary-info">
-            <p id="dictionary-description">これはチシア語の基本的な単語を集めた辞書です。</p>
-            <p id="current-status">現在の単語数: <span id="word-count"></span></p>
-            <p id="example-count">総例文数: <span id="total-examples"></span></p>
-            <p id="letter-frequencies">全文字の割合: <span id="letter-frequency"></span></p>
-            <p id="page-status">現在のページ: <span id="current-page"></span> / <span id="total-pages"></span></p>
-            <input type="text" id="searchInput" placeholder="単語を検索">
-            <button id="searchButton" onclick="searchDictionary()">検索</button>
-        </div>
-        <div id="word-container"></div>
-        <div class="buttons">
-            <button id="prevButton" onclick="showPreviousPage()">前へ</button>
-            <button id="nextButton" onclick="showNextPage()">次へ</button>
-        </div>
+    <h1>チシア辞書</h1>
+    <div>
+        <button id="prevButton">前へ</button>
+        <button id="nextButton">次へ</button>
     </div>
-
+    <div>
+        <label for="search">検索:</label>
+        <input type="text" id="search" onkeyup="searchDictionary()">
+    </div>
+    <div id="dictionary"></div>
+    <div>
+        <p id="currentPageInfo"></p>
+        <p id="wordCountInfo"></p>
+        <p id="characterRatioInfo"></p>
+    </div>
     <script>
         let dictionaryData = [];
         let filteredData = [];
-        let currentPage = 0;
-        const wordsPerPage = 10;
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        const dictionaryDiv = document.getElementById("dictionary");
 
         async function fetchDictionaryData() {
             try {
                 const response = await fetch('dictionary.json');
                 dictionaryData = await response.json();
                 filteredData = dictionaryData;
-                updateDictionaryInfo();
                 displayDictionary();
             } catch (error) {
-                console.error('Error fetching dictionary data:', error);
+                console.error('辞書データの取得エラー:', error);
             }
-        }
-
-        function updateDictionaryInfo() {
-            document.getElementById('word-count').textContent = filteredData.length;
-            document.getElementById('total-pages').textContent = Math.ceil(filteredData.length / wordsPerPage);
-
-            const totalExamples = filteredData.reduce((sum, word) => sum + word.examples.length, 0);
-            document.getElementById('total-examples').textContent = totalExamples;
-
-            const letterFrequency = calculateTotalLetterFrequency(filteredData);
-            document.getElementById('letter-frequency').textContent = letterFrequency;
         }
 
         function displayDictionary() {
-            const wordContainer = document.getElementById('word-container');
-            wordContainer.innerHTML = '';
+            dictionaryDiv.innerHTML = "";
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
 
-            const start = currentPage * wordsPerPage;
-            const end = start + wordsPerPage;
-            const currentWords = filteredData.slice(start, end);
+            for (let i = startIndex; i < endIndex; i++) {
+                const entry = document.createElement("div");
+                entry.classList.add("dictionary-entry");
+                entry.innerHTML = `
+                    <p>日本語: ${filteredData[i].japanese}</p>
+                    <p>チシア語: ${filteredData[i].tisian}</p>
+                    <p>説明: ${filteredData[i].definition}</p>
+                    <p>例文: ${filteredData[i].examples.join(", ")}</p>
+                    <p>種類: ${filteredData[i].type}</p>
+                `;
+                dictionaryDiv.appendChild(entry);
+            }
 
-            currentWords.forEach(word => {
-                const wordEntry = document.createElement('div');
-                wordEntry.className = 'word-entry';
-                
-                const wordTitle = document.createElement('h2');
-                wordTitle.textContent = word.tisian + ' - ' + word.japanese;
-                wordEntry.appendChild(wordTitle);
-                
-                const wordDefinition = document.createElement('p');
-                wordDefinition.textContent = '定義: ' + word.definition;
-                wordEntry.appendChild(wordDefinition);
-
-                const wordExamples = document.createElement('p');
-                wordExamples.textContent = '例: ' + word.examples.join(', ');
-                wordEntry.appendChild(wordExamples);
-                
-                wordContainer.appendChild(wordEntry);
-            });
-
-            document.getElementById('prevButton').disabled = currentPage === 0;
-            document.getElementById('nextButton').disabled = end >= filteredData.length;
-            document.getElementById('current-page').textContent = currentPage + 1;
+            document.getElementById("currentPageInfo").textContent = `ページ ${currentPage}`;
+            document.getElementById("wordCountInfo").textContent = `現在の単語数: ${filteredData.length}`;
+            displayCharacterRatio();
         }
 
-        function calculateTotalLetterFrequency(data) {
-            const letterCounts = {};
-            let totalLetters = 0;
+        function displayCharacterRatio() {
+            const charCount = {};
+            const totalChars = filteredData.reduce((total, entry) => {
+                entry.tisian.split('').forEach(char => {
+                    charCount[char] = (charCount[char] || 0) + 1;
+                });
+                return total + entry.tisian.length;
+            }, 0);
 
-            data.forEach(word => {
-                for (const letter of word.tisian) {
-                    totalLetters++;
-                    if (letterCounts[letter]) {
-                        letterCounts[letter]++;
-                    } else {
-                        letterCounts[letter] = 1;
-                    }
-                }
-            });
-
-            const frequencies = Object.entries(letterCounts).map(([letter, count]) => {
-                return `${letter}: ${(count / totalLetters * 100).toFixed(2)}%`;
-            });
-            return frequencies.join(', ');
+            const ratioInfo = Object.keys(charCount).map(char => {
+                const percentage = ((charCount[char] / totalChars) * 100).toFixed(2);
+                return `${char}: ${percentage}%`;
+            }).join(", ");
+            document.getElementById("characterRatioInfo").textContent = `文字の割合: ${ratioInfo}`;
         }
 
-        function showPreviousPage() {
-            if (currentPage > 0) {
-                currentPage--;
-                displayDictionary();
+        function showPage(page) {
+            currentPage = page;
+            displayDictionary();
+        }
+
+        function nextPage() {
+            if (currentPage * itemsPerPage < filteredData.length) {
+                currentPage++;
+                showPage(currentPage);
             }
         }
 
-        function showNextPage() {
-            if ((currentPage + 1) * wordsPerPage < filteredData.length) {
-                currentPage++;
-                displayDictionary();
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
             }
         }
 
         function searchDictionary() {
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            filteredData = dictionaryData.filter(word => word.tisian.toLowerCase().startsWith(searchInput));
-            currentPage = 0;
-            updateDictionaryInfo();
+            const searchQuery = document.getElementById("search").value.toLowerCase();
+            filteredData = dictionaryData.filter(entry => 
+                entry.japanese.toLowerCase().includes(searchQuery) || 
+                entry.tisian.toLowerCase().includes(searchQuery)
+            );
+            currentPage = 1;
             displayDictionary();
         }
 
-        window.onload = fetchDictionaryData;
+        document.getElementById("nextButton").addEventListener("click", nextPage);
+        document.getElementById("prevButton").addEventListener("click", prevPage);
+
+        fetchDictionaryData();
     </script>
 </body>
 </html>
