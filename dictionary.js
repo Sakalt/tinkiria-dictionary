@@ -1,4 +1,4 @@
-[
+const dictionaryData = [
     {"tisian": "saklon", "japanese": "私", "definition": "私を指す言葉", "examples": ["saklonは私"]},
     {"tisian": "za", "japanese": "は", "definition": "主語を強調する助詞", "examples": ["saklon za tista"]},
     {"tisian": "yan", "japanese": "リンゴ", "definition": "果物のリンゴ", "examples": ["yanが赤い"]},
@@ -23,5 +23,5 @@
     {"tisian": "iton", "japanese": "イチゴ", "definition": "イチゴを表す", "examples": ["iton za atenpa"]},
     {"tisian": "atenpa", "japanese": "甘い", "definition": "糖分が多いことを表す", "examples": ["mulcituma za atenpa"]},
     {"tisian": "mulcituma", "japanese": "サツマイモ", "definition": "サツマイモを表す", "examples": ["mulcituma taf tistasak"]},
-    {"tisian": "sasse", "japanese": "秋", "definition": "9-11月の間を表す", "examples": ["sasse mulcituma"]}
+    {"tisian": "sasse", "japanese": "秋", "definition": "9-11月の間を表す", "
 ]
