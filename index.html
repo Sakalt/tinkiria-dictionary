@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+a<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -21,6 +21,137 @@
         }
     </style>
 </head>
+<body>
+    <h1>チシア辞書</h1>
+    <div>
+        <button id="prevButton">前へ</button>
+        <button id="nextButton">次へ</button>
+    </div>
+    <div>
+        <label for="search">検索:</label>
+        <input type="text" id="search" onkeyup="searchDictionary()">
+        <button onclick="setSearchMode('partial')">部分検索</button>
+        <button onclick="setSearchMode('forward')">前方検索</button>
+        <button onclick="setSearchMode('exact')">完全一致</button>
+    </div>
+    <div id="dictionary"></div>
+    <div>
+        <p id="currentPageInfo"></p>
+        <p id="wordCountInfo"></p>
+        <p id="characterRatioInfo"></p>
+    </div>
+    <script src="dictionary.js"></script>
+    <script>
+        let filteredData = [];
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        const dictionaryDiv = document.getElementById("dictionary");
+        const sortOrder = ['s', 'z', 't', 'd', 'k', 'g', 'f', 'v', 'p', 'b', 'y', 'h', 'x', 'j', 'n', 'm', 'l', 'r', 'w', 'a', 'i', 'u', 'e', 'o'];
+        let searchMode = 'partial';
+
+        function sortDictionary() {
+            dictionaryData.sort((a, b) => {
+                const aIndex = sortOrder.indexOf(a.tisian[0].toLowerCase());
+                const bIndex = sortOrder.indexOf(b.tisian[0].toLowerCase());
+                if (aIndex === bIndex) {
+                    return a.tisian.localeCompare(b.tisian);
+                }
+                return aIndex - bIndex;
+            });
+        }
+
+        function displayDictionary() {
+            dictionaryDiv.innerHTML = "";
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
+
+            for (let i = startIndex; i < endIndex; i++) {
+                const entry = document.createElement("div");
+                entry.classList.add("dictionary-entry");
+                entry.innerHTML = `
+                    <p>日本語: ${filteredData[i].japanese}</p>
+                    <p>チシア語: ${filteredData[i].tisian}</p>
+                    <p>説明: ${filteredData[i].definition}</p>
+                    <p>例文: ${filteredData[i].examples.join(", ")}</p>
+                    <p>種類: ${filteredData[i].type}</p>
+                `;
+                dictionaryDiv.appendChild(entry);
+            }
+
+            document.getElementById("currentPageInfo").textContent = `ページ ${currentPage}`;
+            document.getElementById("wordCountInfo").textContent = `現在の単語数: ${filteredData.length}`;
+            displayCharacterRatio();
+        }
+
+        function displayCharacterRatio() {
+            const charCount = {};
+            const totalChars = filteredData.reduce((total, entry) => {
+                entry.tisian.split('').forEach(char => {
+                    charCount[char] = (charCount[char] || 0) + 1;
+                });
+                return total + entry.tisian.length;
+            }, 0);
+
+            const ratioInfo = Object.keys(charCount).map(char => {
+                const percentage = ((charCount[char] / totalChars) * 100).toFixed(2);
+                return `${char}: ${percentage}%`;
+            }).join(", ");
+            document.getElementById("characterRatioInfo").textContent = `文字の割合: ${ratioInfo}`;
+        }
+
+        function showPage(page) {
+            currentPage = page;
+            displayDictionary();
+        }
+
+        function nextPage() {
+            if (currentPage * itemsPerPage < filteredData.length) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        }
+
+        function setSearchMode(mode) {
+            searchMode = mode;
+            searchDictionary();
+        }
+
+        function searchDictionary() {
+            const searchQuery = document.getElementById("search").value.toLowerCase();
+            filteredData = dictionaryData.filter(entry => {
+                const japaneseMatch = entry.japanese.toLowerCase();
+                const tisianMatch = entry.tisian.toLowerCase();
+                if (searchMode === 'partial') {
+                    return japaneseMatch.includes(searchQuery) || tisianMatch.includes(searchQuery);
+                } else if (searchMode === 'forward') {
+                    return japaneseMatch.startsWith(searchQuery) || tisianMatch.startsWith(searchQuery);
+                } else if (searchMode === 'exact') {
+                    return japaneseMatch === searchQuery || tisianMatch === searchQuery;
+                }
+            });
+            currentPage = 1;
+            displayDictionary();
+        }
+
+        document.getElementById("nextButton").addEventListener("click", nextPage);
+        document.getElementById("prevButton").addEventListener("click", prevPage);
+
+        window.onload = () => {
+            sortDictionary();
+            filteredData = dictionaryData;
+            displayDictionary();
+        }
+    </script>
+</body>
+</html>
+
 <body>
     <h1>チシア辞書</h1>
     <div>
