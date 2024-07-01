@@ -21,6 +21,8 @@ const dictionaryData = [
     {"japanese": "猫", "tisian": "jain", "definition": "小型の家畜の一種", "examples": ["猫が寝ている。"], "type": "noun"},
     {"japanese": "犬", "tisian": "lomt", "definition": "家畜の一種", "examples": ["犬が吠える。"], "type": "noun"},
     {"japanese": "狸", "tisian": "vel", "definition": "野生動物の一種", "examples": ["狸が森にいる。"], "type": "noun"},
-　　 {"japanese": "熊", "tisian": "klet", "definition": "危険な動物", "examples": ["熊が襲ってきた。"], "type": "noun"},
+　　{"japanese": "熊", "tisian": "heau", "definition": "危険な動物", "examples": ["熊が襲ってきた。"], "type": "noun"},
+    {"japanese": "蜘蛛", "tisian": "dovekett", "definition": "8っ本足の虫", "examples": ["dovekett sa cuom za 退治してくれる"], "type": "noun"},
+    {"japanese": "甘い", "tisian": "adenpa", "definition": "糖分が多く入っていること。", "examples": ["saklon sa adenpa"], "type": "adjective"},
     {"japanese": "象", "tisian": "klet", "definition": "大型の動物", "examples": ["象が水を飲む。"], "type": "noun"}
 ];
