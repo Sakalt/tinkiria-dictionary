@@ -25,6 +25,7 @@ const dictionaryData = [
     {"japanese": "蜘蛛", "tisian": "dovekett", "definition": "8っ本足の虫", "examples": ["dovekett sa cuom za 退治してくれる"], "type": "noun"},
     {"japanese": "甘い", "tisian": "adenpa", "definition": "糖分が多く入っていること。", "examples": ["saklon sa adenpa"], "type": "adjective"},
     {"japanese": "コバルト", "tisian": "cobelen", "definition": "青い鉱石。", "examples": ["cobelen blave"], "type": "noun"},
+    {"japanese": "キリン", "tisian": "kule", "definition": "大型の動物", "examples": ["kule が kafteを飲む。"], "type": "noun"},
     {"japanese": "辛い", "tisian": "petul", "definition": "味に刺激があること。", "examples": ["辛いカレー"], "type": "adjective"},
     {"japanese": "象", "tisian": "klet", "definition": "大型の動物", "examples": ["象が水を飲む。"], "type": "noun"}
 ];
