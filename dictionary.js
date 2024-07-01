@@ -1,9 +1,9 @@
 const dictionaryData = [
-    {"japanese": "私", "tisian": "sas", "definition": "話者自身を指す言葉", "examples": ["私は学生です。"], "type": "pronoun"},
+    {"japanese": "私", "tisian": "sas", "definition": "話者自身を指す言葉", "examples": ["sas の学生です。"], "type": "pronoun"},
     {"japanese": "は", "tisian": "sa", "definition": "主語を強調する助詞", "examples": ["これはペンです。"], "type": "particle"},
-    {"japanese": "リンゴ", "tisian": "saklon", "definition": "果物の一種", "examples": ["リンゴを食べます。"], "type": "noun"},
+    {"japanese": "リンゴ", "tisian": "saklon", "definition": "果物の一種", "examples": ["saklon を食べます。"], "type": "noun"},
     {"japanese": "を", "tisian": "za", "definition": "目的語を示す助詞", "examples": ["本を読みます。"], "type": "particle"},
-    {"japanese": "食べる", "tisian": "zak", "definition": "食物を摂取する行為", "examples": ["朝ご飯を食べる。"], "type": "verb"},
+    {"japanese": "食べる", "tisian": "zak", "definition": "食物を摂取する行為", "examples": ["朝ご飯を zak。"], "type": "verb"},
     {"japanese": "過去形", "tisian": "zal", "definition": "動作や出来事が過去に行われたことを示す", "examples": ["昨日、映画を見た。"], "type": "grammar"},
     {"japanese": "現在形", "tisian": "zafta", "definition": "動作や出来事が現在行われていることを示す", "examples": ["今、本を読んでいます。"], "type": "grammar"},
     {"japanese": "命令形", "tisian": "yaf", "definition": "命令や指示を示す形", "examples": ["ドアを開けてください。"], "type": "grammar"},
@@ -16,14 +16,10 @@ const dictionaryData = [
     {"japanese": "金", "tisian": "xigda", "definition": "貴金属の一種", "examples": ["金の指輪。"], "type": "noun"},
     {"japanese": "土", "tisian": "taf", "definition": "地面を構成する物質", "examples": ["土を掘る。"], "type": "noun"},
     {"japanese": "串", "tisian": "tend", "definition": "食物を刺すための細長い棒", "examples": ["焼き鳥の串。"], "type": "noun"},
-    {"japanese": "空", "tisian": "tor", "definition": "大気が存在する領域", "examples": ["空が青い。"], "type": "noun"},
-    {"japanese": "川", "tisian": "karn", "definition": "水が流れる自然の通路", "examples": ["川で泳ぐ。"], "type": "noun"},
-    {"japanese": "いも", "tisian": "detes", "definition": "じゃがいも。", "examples": ["detes za zak"], "type": "noun"},
-    {"japanese": "さつまいも", "tisian": "xe", "definition": "さつまいも", "examples": ["xe za zak"], "type": "noun"},
-    {"japanese": "鉄", "tisian": "gdache", "definition": "金属の一種", "examples": ["gdache to tuva。"], "type": "noun"},
-    {"japanese": "の", "tisian": "to", "definition": "名詞のものをあらわしたり", "examples": ["gdache to tuva。"], "type": "particle"},
-    {"japanese": "指輪", "tisian": "tend", "definition": "指に通す輪", "examples": ["xigada to tuva。"], "type": "noun"},
-    {"japanese": "虫", "tisian": "cuom", "definition": "骨を持たない生物", "examples": ["cuom ne salvzal"], "type": "noun"},
-    {"japanese": "刺す", "tisian": "karn", "definition": "針でやられること", "examples": ["cuom ne salvzal"], "type": "verb"},
-    {"japanese": "に", "tisian": "ne", "definition": "?", "examples": ["cuom ne salvzal"], "type": "particle"}
+    {"japanese": "山", "tisian": "gafn", "definition": "地表が高く盛り上がった場所", "examples": ["山に登る。"], "type": "noun"},
+    {"japanese": "牛", "tisian": "asta", "definition": "家畜の一種", "examples": ["牛が草を食べる。"], "type": "noun"},
+    {"japanese": "猫", "tisian": "jain", "definition": "小型の家畜の一種", "examples": ["猫が寝ている。"], "type": "noun"},
+    {"japanese": "犬", "tisian": "lomt", "definition": "家畜の一種", "examples": ["犬が吠える。"], "type": "noun"},
+    {"japanese": "狸", "tisian": "vel", "definition": "野生動物の一種", "examples": ["狸が森にいる。"], "type": "noun"},
+    {"japanese": "象", "tisian": "klet", "definition": "大型の動物", "examples": ["象が水を飲む。"], "type": "noun"}
 ];
