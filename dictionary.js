@@ -27,7 +27,6 @@ const dictionaryData = [
     {"japanese": "コバルト", "tisian": "cobelen", "definition": "青い鉱石。", "examples": ["cobelen blave"], "type": "noun"},
     {"japanese": "キリン", "tisian": "kule", "definition": "大型の動物", "examples": ["kule が kafteを飲む。"], "type": "noun"},
     {"japanese": "辛い", "tisian": "petul", "definition": "味に刺激があること。", "examples": ["辛いカレー"], "type": "adjective"},
-    {"japanese": "虫", "tisian": "cuom", "definition": "骨を持たない生物", "examples": ["dovekett sa cuom za 退治してくれる"], "type": "noun"},
-    {"japanese": "甲虫", "tisian": "sing", "definition": "骨を持たない生物", "examples": ["sing za"], "type": "noun"},
+    {"japanese": "国", "tisian": "kint", "definition": "領土。", "examples": ["tisia kint"], "type": "noun"},
     {"japanese": "象", "tisian": "klet", "definition": "大型の動物", "examples": ["象が水を飲む。"], "type": "noun"}
 ];
