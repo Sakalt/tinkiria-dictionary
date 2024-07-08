@@ -29,5 +29,7 @@ const dictionaryData = [
     {"japanese": "辛い", "tisian": "petul", "definition": "味に刺激があること。", "examples": ["辛いカレー"], "type": "adjective"},
     {"japanese": "国", "tisian": "kint", "definition": "領土。", "examples": ["tisia kint"], "type": "noun"},
     {"japanese": "虫", "tisian": "cuom", "definition": "骨を持たない生物。", "examples": ["dovekett sa cuom za 退治してくれる"], "type": "noun"},
+    {"japanese": "王", "tisian": "sazos", "definition": "国で一番権力を持つ人。", "examples": ["sazos sa cuomがkilaai"], "type": "noun"},
+    {"japanese": "嫌い", "tisian": "kilaai", "definition": "このみを持たないこと。", "examples": ["cuom sa kilaai"], "type": "adjective"},
     {"japanese": "象", "tisian": "klet", "definition": "大型の動物", "examples": ["象が水を飲む。"], "type": "noun"}
 ];
