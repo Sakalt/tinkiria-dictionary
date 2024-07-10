@@ -35,5 +35,9 @@ const dictionaryData = [
     {"japanese": "赤", "tisian": "napt", "definition": "警告などにも使われる色。", "examples": ["napt alaat"], "type": "noun"},
     {"japanese": "青", "tisian": "pelek", "definition": "食欲をなくす色。", "examples": ["pelek saklon"], "type": "noun"},
     {"japanese": "緑", "tisian": "grattis", "definition": "草などの色。", "examples": ["grattis xesta"], "type": "noun"},
+    {"japanese": "白", "tisian": "mechen", "definition": "漂白剤などの色。", "examples": ["mechen cuom"], "type": "noun"},
+    {"japanese": "黒", "tisian": "kettis", "definition": "チシアでは悪を象徴する。", "examples": ["kettis dovekety"], "type": "noun"},
+    {"japanese": "黄", "tisian": "codom", "definition": "光の色。", "examples": ["codom vatren"], "type": "noun"},
+    {"japanese": "花", "tisian": "vatren", "definition": "?", "examples": ["vatren grattis"], "type": "noun"},
     {"japanese": "象", "tisian": "klet", "definition": "大型の動物", "examples": ["象が水を飲む。"], "type": "noun"}
 ];
