@@ -41,6 +41,6 @@ const dictionaryData = [
     {"japanese": "花", "tisian": "vatren", "definition": "?", "examples": ["vatren grattis"], "type": "noun"},
     {"japanese": "シアン", "tisian": "chane", "definition": "00/255/255", "examples": ["chane kafte"], "type": "noun"},
     {"japanese": "マゼンタ", "tisian": "madyenta", "definition": "マゼンタ", "examples": ["madyenta vatren"], "type": "noun"},
-    {"japanese": "黄緑", "tisian": "gratdom", "definition": "黄色と緑色の中間", "examples": ["gratdom xesta"], "type": "noun"}
+    {"japanese": "黄緑", "tisian": "gratdom", "definition": "黄色と緑色の中間", "examples": ["gratdom xesta"], "type": "noun"},
     {"japanese": "象", "tisian": "klet", "definition": "大型の動物", "examples": ["象が水を飲む。"], "type": "noun"}
 ];
