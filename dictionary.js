@@ -39,5 +39,8 @@ const dictionaryData = [
     {"japanese": "黒", "tisian": "kettis", "definition": "チシアでは悪を象徴する。", "examples": ["kettis dovekety"], "type": "noun"},
     {"japanese": "黄", "tisian": "codom", "definition": "光の色。", "examples": ["codom vatren"], "type": "noun"},
     {"japanese": "花", "tisian": "vatren", "definition": "?", "examples": ["vatren grattis"], "type": "noun"},
+    {"japanese": "シアン", "tisian": "chane", "definition": "00/255/255", "examples": ["chane kafte"], "type": "noun"},
+    {"japanese": "マゼンタ", "tisian": "madyenta", "definition": "マゼンタ", "examples": ["madyenta vatren"], "type": "noun"},
+    {"japanese": "黄緑", "tisian": "gratdom", "definition": "黄色と緑色の中間", "examples": ["gratdom xesta"], "type": "noun"}
     {"japanese": "象", "tisian": "klet", "definition": "大型の動物", "examples": ["象が水を飲む。"], "type": "noun"}
 ];
