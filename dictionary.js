@@ -1,5 +1,6 @@
 const dictionaryData = [
     {"japanese": "私", "tisian": "sas", "definition": "話者自身を指す言葉", "examples": ["sas の学生です。"], "type": "pronoun"},
+    {"japanese": "で", "tisian": "ki", "definition": "名詞の状況を説明する助詞", "examples": ["kint ki rebetes"], "type": "noun"},
     {"japanese": "は", "tisian": "sa", "definition": "主語を強調する助詞", "examples": ["これはペンです。"], "type": "particle"},
     {"japanese": "リンゴ", "tisian": "saklon", "definition": "果物の一種", "examples": ["saklon を食べます。"], "type": "noun"},
     {"japanese": "を", "tisian": "za", "definition": "目的語を示す助詞", "examples": ["本を読みます。"], "type": "particle"},
@@ -38,6 +39,9 @@ const dictionaryData = [
     {"japanese": "白", "tisian": "mechen", "definition": "漂白剤などの色。", "examples": ["mechen cuom"], "type": "noun"},
     {"japanese": "黒", "tisian": "kettis", "definition": "チシアでは悪を象徴する。", "examples": ["kettis dovekety"], "type": "noun"},
     {"japanese": "黄", "tisian": "codom", "definition": "光の色。", "examples": ["codom vatren"], "type": "noun"},
+    {"japanese": "筆", "tisian": "fudu", "definition": "書くための物", "examples": ["fudu za beit"], "type": "noun"},
+    {"japanese": "買う", "tisian": "beit", "definition": "お金をはらってものをてにいれること。", "examples": ["fudu za beit"], "type": "verb"},
+    {"japanese": "売る", "tisian": "ribeit", "definition": "買うの逆", "examples": ["saklon za ribeit"], "type": "verb"},
     {"japanese": "花", "tisian": "vatren", "definition": "?", "examples": ["vatren grattis"], "type": "noun"},
     {"japanese": "シアン", "tisian": "chane", "definition": "00/255/255", "examples": ["chane kafte"], "type": "noun"},
     {"japanese": "マゼンタ", "tisian": "madyenta", "definition": "マゼンタ", "examples": ["madyenta vatren"], "type": "noun"},
