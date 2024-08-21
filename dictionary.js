@@ -45,5 +45,12 @@ const dictionaryData = [
     {"japanese": "花", "tisian": "vatren", "definition": "?", "examples": ["vatren grattis"], "type": "noun"},
     {"japanese": "シアン", "tisian": "chane", "definition": "00/255/255", "examples": ["chane kafte"], "type": "noun"},
     {"japanese": "マゼンタ", "tisian": "madyenta", "definition": "マゼンタ", "examples": ["madyenta vatren"], "type": "noun"},
-    {"japanese": "黄緑", "tisian": "gratdom", "definition": "黄色と緑色の中間", "examples": ["gratdom xesta"], "type": "noun"}
+    {"japanese": "黄緑", "tisian": "gratdom", "definition": "黄色と緑色の中間", "examples": ["gratdom xesta"], "type": "noun"},
+    {"japanese": "缶", "tisian": "moga", "definition": "容器。", "examples": ["mogasin"], "type": "noun"},
+    {"japanese": "食べ物", "tisian": "sin", "definition": "栄養や味を摂取する物", "examples": ["mogasin"], "type": "noun"},
+    {"japanese": "使い", "tisian": "ita", "definition": "madicitaのようにかく", "examples": ["madicita"], "type": "suffix"},
+    {"japanese": "魔法", "tisian": "madic", "definition": "非現実的な技", "examples": ["madicita"], "type": "noun"},
+    {"japanese": "鬼", "tisian": "imaskyr", "definition": "?", "examples": ["tofone sa imaskyr za osur"], "type": "noun"},
+    {"japanese": "子供", "tisian": "tofone", "definition": "技術的に未熟な人", "examples": ["tofone sa imaskyr za osur"], "type": "noun"},
+　　{"japanese": "恐れる", "tisian": "klet", "definition": "怖がること。", "examples": ["tofone sa imaskyr za osur"], "type": "verb"}
 ];
