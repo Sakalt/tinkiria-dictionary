@@ -47,6 +47,7 @@ const dictionaryData = [
     {"japanese": "マゼンタ", "tisian": "madyenta", "definition": "マゼンタ", "examples": ["madyenta vatren"], "type": "noun"},
     {"japanese": "黄緑", "tisian": "gratdom", "definition": "黄色と緑色の中間", "examples": ["gratdom xesta"], "type": "noun"},
     {"japanese": "缶", "tisian": "moga", "definition": "容器。", "examples": ["mogasin"], "type": "noun"},
+    {"japanese": "トレー", "tisian": "mogadolqum", "definition": "レストランにある食べ物をのせるやつ。", "examples": ["mogadolqum の ador に　余りがあった。"], "type": "noun"},
     {"japanese": "食べ物", "tisian": "sin", "definition": "栄養や味を摂取する物", "examples": ["mogasin"], "type": "noun"},
     {"japanese": "使い", "tisian": "ita", "definition": "madicitaのようにかく", "examples": ["madicita"], "type": "suffix"},
     {"japanese": "魔法", "tisian": "madic", "definition": "非現実的な技", "examples": ["madicita"], "type": "noun"},
