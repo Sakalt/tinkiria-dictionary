@@ -53,5 +53,6 @@ const dictionaryData = [
     {"japanese": "魔法", "tisian": "madic", "definition": "非現実的な技", "examples": ["madicita"], "type": "noun"},
     {"japanese": "鬼", "tisian": "imaskyr", "definition": "?", "examples": ["tofone sa imaskyr za osur"], "type": "noun"},
     {"japanese": "子供", "tisian": "tofone", "definition": "技術的に未熟な人", "examples": ["tofone sa imaskyr za osur"], "type": "noun"},
-　　{"japanese": "恐れる", "tisian": "klet", "definition": "怖がること。", "examples": ["tofone sa imaskyr za osur"], "type": "verb"}
+　　 {"japanese": "恐れる", "tisian": "klet", "definition": "怖がること。", "examples": ["tofone sa imaskyr za osur"], "type": "verb"},
+    {"japanese": "水素", "tisian": "kafteqink", "definition": "元素番号1", "examples": ["kafteqink"], "type": "noun"}
 ];
